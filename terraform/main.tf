@@ -1,3 +1,15 @@
+# resource "aws_ecr_repository" "flask_app" {
+#   name = "my-flask-app"
+#   image_scanning_configuration {
+#     scan_on_push = true
+#   }
+  
+#   tags = {
+#     Environment = "dev"
+#     Project     = "FlaskApp"
+#   }
+# }
+
 resource "aws_ecr_repository" "flask_app" {
   name = "my-flask-app"
   image_scanning_configuration {
