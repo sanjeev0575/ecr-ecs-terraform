@@ -6,10 +6,16 @@ pipeline {
         IMAGE_TAG      = "${BUILD_NUMBER}"
     }
     stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/sanjeev0575/ecr-ecs-terraform.git'
+            }
+        }
         stage('Terraform Init & Apply') {
             steps {
                 dir('terraform') {
                     sh 'terraform init'
+                    sh 'terraform plan'
                     sh 'terraform apply -auto-approve'
                 }
             }
